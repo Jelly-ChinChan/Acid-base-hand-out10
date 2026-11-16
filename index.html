@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>【展氏新解】酸與鹽的緩衝能力、配製方法與進階計算</title>
+  <style>
+    :root {
+      --bg-board: #142c1f;
+      --board-frame: #3d2314;
+      --card-bg: rgba(255, 255, 255, 0.06);
+      --card-border: rgba(255, 255, 255, 0.16);
+      --text-main: #f1f5f9;
+      --text-sub: #cbd5e1;
+      --chalk-yellow: #fde047;
+      --chalk-cyan: #67e8f9;
+      --chalk-orange: #fdba74;
+      --chalk-green: #86efac;
+      --chalk-red: #f87171;
+      --highlight-bg: rgba(253, 224, 71, 0.18);
+      --section-box-bg: rgba(0, 0, 0, 0.22);
+      --reaction-bg: rgba(0, 0, 0, 0.35);
+      --diagram-bg: rgba(0, 0, 0, 0.28);
+      --table-th-bg: rgba(255, 255, 255, 0.1);
+      --box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+
+      --ext-card-bg: #131a2e;
+      --ext-card-border: #3b4261;
+      --ext-title: #c084fc;
+      --ext-badge-bg: rgba(192, 132, 252, 0.18);
+      --ext-badge-border: #a855f7;
+      --ext-inner-box: rgba(0, 0, 0, 0.3);
+    }
+
+    body.theme-paper {
+      --bg-board: #ffffff;
+      --board-frame: #94a3b8;
+      --card-bg: #f8fafc;
+      --card-border: #cbd5e1;
+      --text-main: #0f172a;
+      --text-sub: #334155;
+      --chalk-yellow: #92400e;
+      --chalk-cyan: #0284c7;
+      --chalk-orange: #c2410c;
+      --chalk-green: #15803d;
+      --chalk-red: #b91c1c;
+      --highlight-bg: #fef3c7;
+      --section-box-bg: #f1f5f9;
+      --reaction-bg: #e2e8f0;
+      --diagram-bg: #f8fafc;
+      --table-th-bg: #e2e8f0;
+      --box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+
+      --ext-card-bg: #f5f3ff;
+      --ext-card-border: #c7d2fe;
+      --ext-title: #4338ca;
+      --ext-badge-bg: #ede9fe;
+      --ext-badge-border: #6366f1;
+      --ext-inner-box: #ffffff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { width: 100%; overflow-x: hidden; }
+
+    body {
+      background-color: #08100c;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      color: var(--text-main);
+      padding: 8px;
+      line-height: 1.55;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-wrap: pretty;
+    }
+
+    body.theme-paper { background-color: #e2e8f0; }
+
+    .toolbar {
+      width: 100%;
+      max-width: 1440px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+      padding: 10px 16px;
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(8px);
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    body.theme-paper .toolbar {
+      background: #ffffff;
+      border-color: #cbd5e1;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .toolbar-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .brand-tag {
+      font-weight: 900;
+      letter-spacing: 0.5px;
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: #ffffff;
+      padding: 3px 8px;
+      border-radius: 5px;
+      font-size: 0.85rem;
+      white-space: nowrap;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    }
+
+    .toolbar-title { font-weight: 700; font-size: 0.88rem; }
+
+    .btn-group { display: flex; gap: 8px; flex-wrap: wrap; }
+
+    @media (max-width: 720px) {
+      .toolbar { flex-direction: column; align-items: stretch; }
+      .btn-group { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    }
+
+    .btn {
+      padding: 7px 14px;
+      font-size: 0.86rem;
+      border: 1px solid var(--card-border);
+      background: var(--card-bg);
+      color: var(--text-main);
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .btn:hover { filter: brightness(1.15); transform: translateY(-1px); }
+    .btn-primary { background: #2563eb !important; color: #ffffff !important; border-color: #3b82f6 !important; }
+
+    .board-container {
+      width: 100%;
+      max-width: 1440px;
+      background-color: var(--bg-board);
+      border: 8px solid var(--board-frame);
+      border-radius: 14px;
+      box-shadow: var(--box-shadow);
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    @media (max-width: 600px) { .board-container { border-width: 5px; padding: 8px; } }
+
+    .board-header {
+      text-align: center;
+      border-bottom: 2px dashed var(--card-border);
+      padding-bottom: 10px;
+    }
+
+    .main-title-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .board-header h1 {
+      font-size: clamp(1.2rem, 3.5vw, 1.6rem);
+      letter-spacing: 1.5px;
+      color: var(--chalk-yellow);
+      font-weight: 900;
+    }
+
+    .badge-pill {
+      font-size: 0.78rem;
+      background: var(--highlight-bg);
+      color: var(--chalk-cyan);
+      padding: 3px 8px;
+      border-radius: 20px;
+      border: 1px solid var(--chalk-cyan);
+      font-weight: 700;
+    }
+
+    .board-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      align-items: stretch;
+    }
+
+    @media (max-width: 1200px) { .board-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 768px) { .board-grid { grid-template-columns: 1fr; } }
+
+    .col-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .col-title {
+      font-size: 0.96rem;
+      font-weight: 800;
+      color: var(--chalk-yellow);
+      border-bottom: 2px solid var(--chalk-cyan);
+      padding-bottom: 5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    .section-box {
+      background: var(--section-box-bg);
+      border-left: 3px solid var(--chalk-yellow);
+      padding: 9px;
+      border-radius: 5px;
+      font-size: 0.84rem;
+      line-height: 1.55;
+    }
+
+    .sub-head {
+      font-weight: 900;
+      color: #e2e8f0;
+      margin-bottom: 4px;
+      font-size: 0.88rem;
+      letter-spacing: 0.5px;
+    }
+    body.theme-paper .sub-head { color: #1e293b; }
+
+    .reaction-box {
+      background: var(--reaction-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 9px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.82rem;
+      line-height: 1.5;
+      letter-spacing: -0.4px;
+    }
+
+    .chem-eq-hero {
+      font-weight: 900;
+      color: var(--chalk-green);
+      font-size: clamp(0.85rem, 2.5vw, 0.98rem);
+      text-align: center;
+      padding: 5px 4px;
+      margin: 4px 0;
+      background: rgba(0, 0, 0, 0.25);
+      border-radius: 6px;
+      border: 1px dashed var(--card-border);
+      white-space: nowrap;
+      overflow-x: auto;
+      scrollbar-width: none;
+      letter-spacing: -0.4px;
+    }
+    .chem-eq-hero::-webkit-scrollbar { display: none; }
+
+    .role-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 6px 0;
+      font-size: 0.78rem;
+      background: rgba(0, 0, 0, 0.22);
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid var(--card-border);
+      letter-spacing: -0.3px;
+    }
+    .role-table th, .role-table td {
+      padding: 4px 5px;
+      text-align: center;
+      border: 1px solid var(--card-border);
+    }
+    .role-table th { background: var(--table-th-bg); font-weight: 800; }
+
+    .gold-glow {
+      background: rgba(253, 224, 71, 0.25) !important;
+      color: var(--chalk-yellow) !important;
+      font-weight: 900 !important;
+      text-shadow: 0 0 8px rgba(253, 224, 71, 0.8), 0 0 15px rgba(253, 224, 71, 0.5);
+      border: 1.5px solid var(--chalk-yellow) !important;
+      box-shadow: 0 0 10px rgba(253, 224, 71, 0.4);
+      animation: goldPulse 2s infinite alternate;
+    }
+
+    @keyframes goldPulse {
+      0% { box-shadow: 0 0 5px rgba(253, 224, 71, 0.4); }
+      100% { box-shadow: 0 0 14px rgba(253, 224, 71, 0.8); }
+    }
+
+    .note-pill {
+      display: inline-block;
+      padding: 2px 7px;
+      border-radius: 4px;
+      background: var(--highlight-bg);
+      color: var(--chalk-yellow);
+      font-size: 0.77rem;
+      font-weight: 700;
+      margin-top: 4px;
+    }
+
+    .diagram-wrap {
+      width: 100%;
+      background: var(--diagram-bg);
+      border-radius: 8px;
+      padding: 6px 4px;
+      text-align: center;
+      border: 1px solid var(--card-border);
+    }
+
+    .diagram-wrap svg {
+      width: 100%;
+      max-width: 280px;
+      height: auto;
+      margin: 0 auto;
+      display: block;
+    }
+
+    /* 挖空模式樣式 */
+    .cloze { transition: background-color 0.2s ease, color 0.2s ease; cursor: default; }
+    body.cloze-mode .cloze {
+      background: #475569 !important;
+      color: transparent !important;
+      border-radius: 4px;
+      padding: 1px 6px;
+      margin: 0 1px;
+      cursor: pointer !important;
+      user-select: none;
+      border: 1px dashed var(--chalk-yellow) !important;
+      display: inline-block;
+      vertical-align: baseline;
+      min-width: 1.5em;
+    }
+    body.cloze-mode.theme-paper .cloze { background: #cbd5e1 !important; border: 1px dashed #475569 !important; }
+    body.cloze-mode .cloze.revealed {
+      background: var(--highlight-bg) !important;
+      color: inherit !important;
+      border: 1.5px solid var(--chalk-green) !important;
+      cursor: pointer !important;
+    }
+
+    /* 測驗 Modal */
+    .quiz-modal {
+      position: fixed; inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(6px);
+      z-index: 9999;
+      display: none;
+      overflow-y: auto;
+      padding: 16px 8px;
+    }
+    .quiz-modal.active { display: flex; justify-content: center; align-items: flex-start; }
+    .quiz-card-container {
+      background: #0f172a; border: 2px solid #334155; border-radius: 12px;
+      width: 100%; max-width: 860px; color: #f8fafc; padding: 16px; margin: auto;
+      display: flex; flex-direction: column; gap: 14px; box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    }
+    body.theme-paper .quiz-card-container { background: #ffffff; color: #0f172a; border-color: #cbd5e1; }
+    .quiz-header {
+      display: flex; justify-content: space-between; align-items: center;
+      border-bottom: 2px solid #475569; padding-bottom: 10px;
+    }
+    .quiz-stats-bar {
+      display: flex; justify-content: space-between;
+      background: rgba(255,255,255,0.06); padding: 6px 12px; border-radius: 8px; font-size: 0.82rem; align-items: center;
+    }
+    body.theme-paper .quiz-stats-bar { background: #f1f5f9; }
+    .question-block {
+      background: rgba(255,255,255,0.03); border: 1px solid #334155; border-radius: 8px;
+      padding: 12px; display: flex; flex-direction: column; gap: 8px;
+    }
+    body.theme-paper .question-block { background: #f8fafc; border-color: #e2e8f0; }
+    .q-badge { font-size: 0.72rem; padding: 2px 6px; border-radius: 4px; background: #3b82f6; color: #fff; width: fit-content; }
+    .option-list { display: flex; flex-direction: column; gap: 6px; }
+    .opt-btn {
+      text-align: left; padding: 8px 12px; border-radius: 6px;
+      background: rgba(255,255,255,0.05); border: 1px solid #475569; color: inherit; cursor: pointer; font-size: 0.85rem;
+      transition: all 0.15s;
+    }
+    body.theme-paper .opt-btn { background: #ffffff; border-color: #cbd5e1; }
+    .opt-btn.correct { background: #14532d !important; border-color: #22c55e !important; color: #86efac !important; font-weight: bold; }
+    body.theme-paper .opt-btn.correct { background: #dcfce7 !important; border-color: #22c55e !important; color: #15803d !important; }
+    .opt-btn.wrong { background: #7f1d1d !important; border-color: #ef4444 !important; color: #fca5a5 !important; font-weight: bold; }
+    body.theme-paper .opt-btn.wrong { background: #fee2e2 !important; border-color: #ef4444 !important; color: #b91c1c !important; }
+    .expl-box {
+      margin-top: 4px; padding: 8px; background: rgba(0,0,0,0.3);
+      border-left: 3px solid #f59e0b; border-radius: 4px; font-size: 0.82rem; display: none; line-height: 1.5;
+    }
+    body.theme-paper .expl-box { background: #f1f5f9; }
+    .expl-box.show { display: block; }
+
+    .footer {
+      text-align: center; padding: 14px 0 6px 0; border-top: 1px dashed var(--card-border);
+      font-size: 0.8rem; color: var(--text-sub); display: flex; flex-direction: column; gap: 4px; align-items: center;
+    }
+    .footer-copyright { font-weight: 800; color: var(--chalk-yellow); letter-spacing: 1px; }
+
+    @media print {
+      .toolbar, .quiz-modal { display: none !important; }
+      body { background: #ffffff !important; padding: 0 !important; }
+      .board-container { border: none !important; box-shadow: none !important; max-width: 100% !important; }
+      @page { size: A4 landscape; margin: 5mm; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 控制工具列 -->
+  <div class="toolbar">
+    <div class="toolbar-title-wrap">
+      <span class="brand-tag">展氏新解</span>
+      <span class="toolbar-title">酸與鹽的緩衝能力、配製方法與進階計算</span>
+    </div>
+    <div class="btn-group">
+      <button class="btn btn-primary" onclick="openQuiz()">📝 進入隨堂測驗</button>
+      <button class="btn" onclick="toggleTheme()">🎨 切換黑板/紙本模式</button>
+      <button class="btn" onclick="toggleCloze()">✏️ 課堂挖空複習</button>
+      <button class="btn" onclick="window.print()">🖨️ 列印 A4 講義</button>
+    </div>
+  </div>
+
+  <div class="board-container">
+    
+    <!-- 頂部黑板標題 -->
+    <div class="board-header">
+      <div class="main-title-wrap">
+        <span class="brand-tag" style="font-size:0.95rem; padding:3px 8px;">展氏新解</span>
+        <h1>酸與鹽的緩衝能力、配製方法與進階計算</h1>
+        <span class="badge-pill">緩衝機制 · 莫耳數與緩衝能力 · pH=5 配製選擇 · 限量反應與 pH 計算</span>
+      </div>
+    </div>
+
+    <!-- 四大核心欄位 -->
+    <div class="board-grid">
+
+      <!-- 欄位一：緩衝溶液的觀念與微觀抗酸抗鹼機制 -->
+      <div class="col-card">
+        <div class="col-title">
+          <span>一、緩衝溶液的觀念與機制</span>
+          <span style="font-size:0.75rem; opacity:0.8;">抗酸抗鹼實戰</span>
+        </div>
+
+        <div class="section-box">
+          <div class="sub-head">1. 緩衝的基本概念</div>
+          <div style="font-size: 0.8rem; line-height: 1.55; margin-bottom: 6px;">
+            • 水中若加入微量強酸或強鹼，pH會劇降或劇升。<br>
+            • 若事先在水中加入 <b style="color:var(--chalk-yellow);">酸 ＋ 鹽</b> 組合可以防止水的 pH 發生劇烈變化，這樣的水溶液稱為 <b style="color:var(--chalk-cyan);">緩衝溶液 (Buffer Solution)</b>。
+          </div>
+
+          <div class="sub-head" style="margin-top: 6px;">2. 以 HF / F⁻ 為例</div>
+          <div class="chem-eq-hero">
+            HF ⇌ H<sup>+</sup> ＋ F<sup>-</sup>
+          </div>
+          <div style="font-size: 0.8rem; margin-top: 4px; letter-spacing:-0.3px;">
+            • 當外加強鹼 OH<sup>-</sup> 時：<br>
+            <span class="cloze" style="color:var(--chalk-yellow);">HF 可消去其 OH<sup>-</sup></span> (HF ＋ OH<sup>-</sup> → F<sup>-</sup> ＋ H<sub>2</sub>O)<br>
+            • 當外加強酸 H<sup>+</sup> 時：<br>
+            <span class="cloze" style="color:var(--chalk-cyan);">F<sup>-</sup> 可消去其 H<sup>+</sup></span> (F<sup>-</sup> ＋ H<sup>+</sup> → HF)
+          </div>
+        </div>
+
+        <!-- 微觀莫耳數對比 -->
+        <div class="diagram-wrap" style="padding: 8px 6px;">
+          <div style="font-size: 0.78rem; font-weight: 800; color: var(--chalk-yellow); margin-bottom: 4px;">
+            【緩衝容量概念】：莫耳數決定抗酸抗鹼極限
+          </div>
+          <div style="font-size: 0.75rem; text-align: left; background: rgba(0,0,0,0.3); padding: 6px; border-radius: 6px; line-height: 1.5;">
+            • 含 <span class="gold-glow" style="padding: 1px 4px; border-radius: 3px; display: inline-block;">10個 HF & 10個 F<sup>-</sup></span>：最多可緩衝 10 個 NaOH 及 10 個 HCl。<br>
+            • 含 <span class="gold-glow" style="padding: 1px 4px; border-radius: 3px; display: inline-block;">100個 HF & 100個 F<sup>-</sup></span>：最多可緩衝 100 個 NaOH 及 100 個 HCl。<br>
+            📌 <b>結論</b>：緩衝液中成分的<b>莫耳數越多，緩衝越佳</b>！
+          </div>
+        </div>
+
+        <div class="note-pill" style="display:block; text-align:center;">
+          📌 經典考題：相同濃度下，體積愈大、莫耳數愈多者緩衝效果最好！
+        </div>
+      </div>
+
+      <!-- 欄位二：緩衝能力比較與最佳緩衝液判斷 -->
+      <div class="col-card">
+        <div class="col-title">
+          <span>二、緩衝能力比較與經典題</span>
+          <span style="font-size:0.75rem; opacity:0.8;">莫耳數與總量比較</span>
+        </div>
+
+        <div class="section-box">
+          <div class="sub-head" style="color: var(--chalk-orange);">📋 經典考題辨析</div>
+          <div style="background: rgba(0,0,0,0.3); border-left: 2px solid var(--chalk-orange); padding: 5px; border-radius: 4px; margin-bottom: 6px; font-size: 0.78rem;">
+            <b>下列何者緩衝效果最佳？</b><br>
+            甲：100 mL, 0.1 M HCl ＋ 0.1 M Cl<sup>-</sup><br>
+            乙：100 mL, 0.1 M HF ＋ 0.1 M F<sup>-</sup><br>
+            丙：1000 mL, 0.1 M HF ＋ 0.1 M F<sup>-</sup><br>
+            丁：1000 mL, 0.2 M HF ＋ 0.2 M F<sup>-</sup>
+          </div>
+
+          <div style="font-size:0.78rem; line-height:1.55; letter-spacing:-0.3px;">
+            • <b>逐一解析</b>：<br>
+            • <b>甲選項</b>：HCl 為強酸，無共軛酸鹼緩衝對，<span style="color:var(--chalk-red); font-weight:bold;">無緩衝能力 (❌)</span>。<br>
+            • <b>乙選項</b>：100 mL × 0.1 M ＝ 10 mmol (HF 與 F<sup>-</sup> 各 10 mmol)。<br>
+            • <b>丙選項</b>：1000 mL × 0.1 M ＝ 100 mmol (HF 與 F<sup>-</sup> 各 100 mmol)，比乙 <span style="color:var(--chalk-green); font-weight:bold;">更好 (⭕)</span>。<br>
+            • <b>丁選項</b>：1000 mL × 0.2 M ＝ 200 mmol (HF 與 F<sup>-</sup> 各 200 mmol)，莫耳數最多，<span class="gold-glow" style="padding: 1px 4px; border-radius: 3px; display: inline-block;">緩衝效果最佳 (🏆)</span>。<br>
+            • <b>同濃度比體積，同體積比濃度，總莫耳數決定一切！</b>
+          </div>
+        </div>
+
+        <div class="reaction-box" style="border-left: 3px solid var(--chalk-cyan); letter-spacing:-0.3px;">
+          <div class="sub-head" style="color:var(--chalk-cyan);">
+            💡 緩衝液核心構成條件
+          </div>
+          <div style="font-size:0.79rem; line-height:1.5;">
+            1. 必須含有<b>弱酸及其共軛鹼</b>（或弱鹼及其共軛酸）。<br>
+            2. 兩者濃度皆不可為 0，且數量相當（通常濃度比在 0.1 ~ 10 之間具有良好緩衝範圍）。<br>
+            3. 強酸與其鹽類（如 HCl + NaCl）無法構成緩衝液！
+          </div>
+        </div>
+
+        <div class="note-pill" style="display:block; text-align:center;">
+          💡 展哥口訣：有弱酸才有共軛對，莫耳數大者勝出！
+        </div>
+      </div>
+
+      <!-- 欄位三：配製緩衝溶液的方法 (選擇成分與限量反應) -->
+      <div class="col-card">
+        <div class="col-title">
+          <span>三、配製緩衝溶液的方法</span>
+          <span style="font-size:0.75rem; opacity:0.8;">選擇成分與中和途徑</span>
+        </div>
+
+        <!-- 1. 選擇成分 -->
+        <div class="section-box" style="border-left-color: var(--chalk-yellow);">
+          <div class="sub-head" style="color:var(--chalk-yellow);">1. 選擇成分原則</div>
+          <div style="font-size:0.8rem; line-height:1.55; letter-spacing:-0.3px;">
+            • 若要配製 <b style="color:var(--chalk-yellow);">pH ＝ 5</b> 的緩衝液：<br>
+            應挑選 <span class="cloze" style="color:var(--chalk-cyan); font-weight:bold;">Ka ≒ 10<sup>-5</sup></span> 的弱酸最適合（使 pKa ≒ pH）。
+          </div>
+        </div>
+
+        <!-- 2. 常見配製途徑與正誤判斷 -->
+        <div class="reaction-box" style="border-left: 3px solid var(--chalk-green); letter-spacing:-0.3px;">
+          <div class="sub-head" style="color:var(--chalk-green);">
+            2. 配製 pH = 5 緩衝液之正誤判斷 (Ka ≒ 10<sup>-5</sup>)
+          </div>
+          <div style="font-size:0.79rem; line-height:1.5;">
+            • <b style="color:var(--chalk-cyan);">甲</b>：用 CH<sub>3</sub>COOH ＋ CH<sub>3</sub>COO<sup>-</sup> (Ka = 10<sup>-5</sup>) <span style="color:var(--chalk-green); font-weight:bold;">(⭕ 正確)</span><br>
+            • <b style="color:var(--chalk-cyan);">乙</b>：用 HF ＋ F<sup>-</sup> (Ka = 10<sup>-4</sup>) <span style="color:var(--chalk-red); font-weight:bold;">(❌ 酸性太強，不適合 pH=5)</span><br>
+            • <b style="color:var(--chalk-cyan);">丙</b>：用 <span class="cloze" style="font-weight:bold;">1 mol CH<sub>3</sub>COOH ＋ 0.5 mol NaOH</span> 進行中和反應：<br>
+            <div style="font-family:monospace; font-size:0.72rem; color:var(--chalk-yellow); margin:2px 0;">
+              CH<sub>3</sub>COOH ＋ OH<sup>-</sup> → CH<sub>3</sub>COO<sup>-</sup> ＋ H<sub>2</sub>O<br>
+              反應後剩 0.5 mol 酸 ＋ 0.5 mol 鹽 <span style="color:var(--chalk-green); font-weight:bold;">(⭕ 成功配製)</span>
+            </div>
+            • <b style="color:var(--chalk-cyan);">丁</b>：用 <span class="cloze" style="font-weight:bold;">1 mol CH<sub>3</sub>COO<sup>-</sup> ＋ 0.5 mol HCl</span> 進行中和反應：<br>
+            <div style="font-family:monospace; font-size:0.72rem; color:var(--chalk-yellow); margin:2px 0;">
+              CH<sub>3</sub>COO<sup>-</sup> ＋ H<sup>+</sup> → CH<sub>3</sub>COOH<br>
+              反應後剩 0.5 mol 鹽 ＋ 0.5 mol 酸 <span style="color:var(--chalk-green); font-weight:bold;">(⭕ 成功配製)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="note-pill" style="display:block; text-align:center;">
+          📌 展哥重點：利用限量強酸/強鹼與弱酸/弱鹼反應，是實驗室配製緩衝液的常用手法！
+        </div>
+      </div>
+
+      <!-- 欄位四：緩衝溶液 pH 計算公式與進階實戰 -->
+      <div class="col-card">
+        <div class="col-title">
+          <span>四、緩衝計算公式與實戰範例</span>
+          <span style="font-size:0.75rem; opacity:0.8;">加水稀釋與加強鹼計算</span>
+        </div>
+
+        <!-- 1. 核心公式 -->
+        <div class="section-box" style="border-left-color: var(--chalk-yellow);">
+          <div class="sub-head" style="color:var(--chalk-yellow);">1. 緩衝計算核心公式</div>
+          <div class="chem-eq-hero" style="font-size:0.75rem; color:var(--chalk-cyan);">
+            [H<sup>+</sup>] ＝ <i>K</i><sub>a</sub> × ([共軛酸] / [共軛鹼])<br>
+            pH ＝ p<i>K</i><sub>a</sub> ＋ log([共軛鹼] / [共軛酸])
+          </div>
+        </div>
+
+        <!-- 2. 實戰範例與加水稀釋不變性 -->
+        <div class="reaction-box" style="border-left: 3px solid var(--chalk-orange); letter-spacing:-0.3px;">
+          <div class="sub-head" style="color:var(--chalk-orange);">
+            2. 實戰演練：pH ＝ 5 的緩衝液變化
+          </div>
+          <div style="font-size:0.78rem; line-height:1.5;">
+            • <b>已知條件</b>：於含有 CH<sub>3</sub>COOH (1 mol) 與 CH<sub>3</sub>COO<sup>-</sup> (1 mol) 的緩衝液中：<br>
+            • <b style="color:var(--chalk-yellow);">Q1：加水稀釋後，pH 是否改變？</b><br>
+            ➡ <b>pH ＝ 5（維持不變）</b>。<br>
+            <i>原因：</i>因 [共軛酸] 與 [共軛鹼] 同時被稀釋相同的體積倍數，濃度比值 $\frac{[\text{HA}]}{[A^-]}$ 維持不變，故 pH 不隨加水而改變！<br><br>
+            
+            • <b style="color:var(--chalk-yellow);">Q2：再加入 0.5 mol NaOH 後的 pH 為何？</b><br>
+            <div style="background: rgba(0,0,0,0.35); padding: 5px; border-radius: 4px; margin-top: 4px; font-family: monospace; font-size: 0.74rem;">
+              CH<sub>3</sub>COOH ＋ OH<sup>-</sup> → CH<sub>3</sub>COO<sup>-</sup> ＋ H<sub>2</sub>O<br>
+              初： 1 mol　　 0.5 mol　　 1 mol<br>
+              變： －0.5　　 －0.5　　 ＋0.5<br>
+              平： <span style="color:var(--chalk-cyan);">0.5 mol</span>　　 0　　　 <span style="color:var(--chalk-green);">1.5 mol</span><br><br>
+              代入公式：<br>
+              [H<sup>+</sup>] ＝ 10<sup>-5</sup> × (0.5 / 1.5) ＝ 10<sup>-5</sup> / 3<br>
+              pH ＝ －log(10<sup>-5</sup> / 3) ＝ 5 ＋ log 3 <span style="color:var(--chalk-yellow); font-weight:bold;">≈ 5.48</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="note-pill" style="display:block; text-align:center;">
+          💡 展哥口訣：加強鹼酸度減弱（pH上升），加強酸鹼度減弱（pH下降），加水比值不變pH不變！
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 延伸思維專區 -->
+    <div class="extension-container" style="background: var(--ext-card-bg); border: 2px solid var(--ext-card-border); border-radius: 12px; padding: 14px; display: flex; flex-direction: column; gap: 12px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; border-bottom: 2px solid var(--ext-badge-border); padding-bottom: 8px;">
+        <div style="font-size: 1.05rem; font-weight: 900; color: var(--ext-title); display: flex; align-items: center; gap: 8px;">
+          <span>🧠 【展氏新解】延伸思維：緩衝溶液的抗酸抗鹼極限與 Henderson-Hasselbalch 方程式深度解析</span>
+        </div>
+        <span style="font-size: 0.78rem; background: rgba(192,132,252,0.18); border: 1px solid #a855f7; color: var(--ext-title); padding: 2px 8px; border-radius: 20px; font-weight: 800;">緩衝容量 · 離子效應 · 實驗室精準配製</span>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr; gap: 12px;">
+        
+        <!-- 區塊 A -->
+        <div style="background: var(--ext-inner-box); border: 1px solid var(--card-border); border-radius: 8px; padding: 11px; font-size: 0.84rem;">
+          <div style="font-weight:800; color:var(--chalk-cyan); font-size:0.9rem; margin-bottom:4px;">
+            📌 A. 為什麼緩衝溶液加水稀釋時，pH 值幾乎保持不變？
+          </div>
+          <p style="font-size:0.81rem; color:var(--text-sub); line-height:1.55;">
+            從 Henderson-Hasselbalch 方程式可知，pH 決定於共軛酸與共軛鹼的<b>濃度比值</b> $\log([A^-]/[HA])$。當加入純水稀釋時，酸與鹽兩者同時被擴大相同的體積體積 $V$，分子的體積與分母的體積互相消去，因此比值維持恆定。不過，若加水稀釋到極度極端（接近水的自動解離濃度 $10^{-7}\text{ M}$），則緩衝效果才會失效。
+          </p>
+        </div>
+
+        <!-- 區塊 B -->
+        <div style="background: var(--ext-inner-box); border: 1px solid var(--card-border); border-radius: 8px; padding: 11px; font-size: 0.84rem;">
+          <div style="font-weight:800; color:var(--chalk-orange); font-size:0.9rem; margin-bottom:4px;">
+            📌 B. 緩衝容量（Buffer Capacity）的極限在哪裡？
+          </div>
+          <p style="font-size:0.81rem; color:var(--text-sub); line-height:1.55;">
+            緩衝溶液並非萬能。當外加的強酸或強鹼莫耳數超過了緩衝液中原本的共軛鹼或共軛酸總量時（即酸或鹼被完全耗盡），緩衝對瓦解，pH 值就會發生劇烈崩潰。一般而言，當緩衝比值 $\frac{[A^-]}{[HA]}$ 落在 $0.1$ 到 $10$ 之間（即 $\text{pH} = \text{p}K_a \pm 1$）時，緩衝溶液具有最佳的抗酸抗鹼效能。
+          </p>
+        </div>
+
+        <!-- 區塊 C -->
+        <div style="background: var(--ext-inner-box); border: 1px solid var(--card-border); border-radius: 8px; padding: 11px; font-size: 0.84rem;">
+          <div style="font-weight:800; color:var(--chalk-yellow); font-size:0.9rem; margin-bottom:4px;">
+            📌 C. 生物體內的經典緩衝系統：碳酸氫鹽與磷酸鹽緩衝對
+          </div>
+          <p style="font-size:0.81rem; color:var(--text-sub); line-height:1.55;">
+            人體血液的 pH 值必須嚴格維持在 $7.35 \sim 7.45$ 之間，這主要依賴血液中的碳酸氫鹽緩衝系統（$\text{H}_2\text{CO}_3 / \text{HCO}_3^-$）以及細胞內的磷酸鹽緩衝系統（$\text{H}_2\text{PO}_4^- / \text{HPO}_4^{2-}$）。透過肺部調節二氧化碳呼出量與腎臟排泄氫離子，人體展現了精妙絕倫的動態緩衝平衡。
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 頁尾版權 -->
+    <div class="footer">
+      <div>展氏新解 · 酸與鹽的緩衝能力、配製方法與進階計算</div>
+      <div class="footer-copyright">© 展氏新解 版權所有</div>
+      <div style="font-size:0.78rem; opacity:0.85; margin-top:4px;">
+        👀 累計點閱：<span id="pageViews" style="color:var(--chalk-yellow); font-weight:bold;">168</span> 次
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 隨堂測驗 Modal -->
+  <div id="quizModal" class="quiz-modal">
+    <div class="quiz-card-container">
+      <div class="quiz-header">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <span class="brand-tag">展氏新解</span>
+          <h2 style="font-size:1.15rem; font-weight:900;">酸與鹽緩衝能力即時檢測系統</h2>
+        </div>
+        <button class="btn" style="background:#dc2626; color:#fff; border:none;" onclick="closeQuiz()">✕ 關閉返回講義</button>
+      </div>
+
+      <div class="quiz-stats-bar">
+        <span>已作答：<b id="answeredCount">0</b> / <span id="totalCount">3</span> 題</span>
+        <span>答對率：<b id="accuracyRate" style="color:var(--chalk-yellow);">0%</b></span>
+        <button class="btn" style="padding:2px 8px; font-size:0.75rem;" onclick="resetQuiz()">🔄 全部重置</button>
+      </div>
+
+      <div id="quizList" style="display:flex; flex-direction:column; gap:12px;"></div>
+    </div>
+  </div>
+
+  <script>
+    const QUESTION_BANK = [
+      {
+        id: 1,
+        level: "緩衝能力與莫耳數比較",
+        question: "下列關於緩衝溶液及其緩衝能力的敘述，何者正確？",
+        options: [
+          "A. 100 mL, 0.1 M HCl 混合 0.1 M NaCl 可構成極佳的緩衝溶液",
+          "B. 緩衝溶液中酸與鹽的總莫耳數愈多，其緩衝能力愈佳",
+          "C. 緩衝溶液加水稀釋 10 倍時，其 pH 值會顯著上升 1 個單位",
+          "D. 緩衝溶液只能消去外加的酸，無法消去外加的鹼",
+          "E. 強酸與強鹼的中和鹽類水溶液皆具備強效緩衝能力"
+        ],
+        answer: 1,
+        explanation: "【展氏新解解析】：<br>• 強酸 HCl 與 NaCl 無共軛酸鹼對，無法構成緩衝液 (A 錯誤)。<br>• 緩衝溶液加水稀釋時，因濃度比值不變，pH 值維持不變 (C 錯誤)。<br>• 緩衝溶液同時含有弱酸（可消去 OH<sup>-</sup>）與共軛鹼（可消去 H<sup>+</sup>），且總莫耳數愈多緩衝能力愈佳 (B 正確)。"
+      },
+      {
+        id: 2,
+        level: "緩衝溶液配製方法",
+        question: "若欲在實驗室配製 pH ＝ 5.0 的緩衝溶液，下列何種弱酸及其共軛鹼組合最為適當？（已知水的 Kw ＝ 10<sup>-14</sup>）",
+        options: [
+          "A. Ka ＝ 10<sup>-2</sup> 之強弱適中酸",
+          "B. Ka ＝ 10<sup>-5</sup> 之弱酸（如醋酸 CH<sub>3</sub>COOH）",
+          "C. Ka ＝ 10<sup>-9</sup> 之極弱酸",
+          "D. Ka ＝ 1 之極強酸",
+          "E. 任何酸鹼對皆可任意配製出 pH=5.0"
+        ],
+        answer: 1,
+        explanation: "【展氏新解解析】：<br>• 欲配製特定 pH 值（如 pH = 5.0）的緩衝液，應選擇 pKa 接近欲配製 pH 值的弱酸，即 Ka ≒ 10<sup>-5</sup>（如醋酸系統）最為理想。<br>• 故選項 B 正確。"
+      },
+      {
+        id: 3,
+        level: "緩衝溶液限量反應與計算",
+        question: "於含有 1 mol CH<sub>3</sub>COOH 及 1 mol CH<sub>3</sub>COO<sup>-</sup> 之緩衝溶液中，加入 0.5 mol NaOH 固體完全溶解後（體積變化忽略），關於溶液之敘述何者正確？",
+        options: [
+          "A. 溶液中 CH<sub>3</sub>COOH 減少至 0.5 mol，CH<sub>3</sub>COO<sup>-</sup> 增加至 1.5 mol",
+          "B. 溶液中 CH<sub>3</sub>COOH 完全被中和耗盡，失去緩衝能力",
+          "C. 加入 NaOH 後溶液 pH 值會大幅下降",
+          "D. 溶液中 [H<sup>+</sup>] 變為原本的 3 倍",
+          "E. 溶液的 pH 值會維持剛好 5.0 不變"
+        ],
+        answer: 0,
+        explanation: "【展氏新解解析】：<br>• 進行限量反應：CH<sub>3</sub>COOH ＋ OH<sup>-</sup> → CH<sub>3</sub>COO<sup>-</sup>。<br>• 加入 0.5 mol OH<sup>-</sup> 會消耗 0.5 mol CH<sub>3</sub>COOH 轉生成 0.5 mol CH<sub>3</sub>COO<sup>-</sup>。<br>• 反應後：[CH<sub>3</sub>COOH] 剩 0.5 mol，[CH<sub>3</sub>COO<sup>-</sup>] 增為 1.5 mol。<br>• 故選項 A 正確。"
+      }
+    ];
+
+    const userAnswers = {};
+
+    function renderQuiz() {
+      const container = document.getElementById('quizList');
+      container.innerHTML = '';
+      document.getElementById('totalCount').innerText = QUESTION_BANK.length;
+
+      QUESTION_BANK.forEach((q, idx) => {
+        const qCard = document.createElement('div');
+        qCard.className = 'question-block';
+
+        let optsHtml = q.options.map((opt, optIdx) => `
+          <button class="opt-btn" id="btn_${q.id}_${optIdx}" onclick="selectAnswer(${q.id}, ${optIdx}, ${q.answer})">
+            ${opt}
+          </button>
+        `).join('');
+
+        qCard.innerHTML = `
+          <div>
+            <span class="q-badge">${q.level}</span>
+            <div style="font-weight: 800; font-size: 0.92rem; line-height: 1.5; margin-top: 4px;">第 ${idx + 1} 題：${q.question}</div>
+          </div>
+          <div class="option-list">${optsHtml}</div>
+          <div class="expl-box" id="expl_${q.id}">${q.explanation}</div>
+        `;
+        container.appendChild(qCard);
+      });
+      updateStats();
+    }
+
+    function selectAnswer(qid, selectedIdx, correctIdx) {
+      if (userAnswers[qid] !== undefined) return;
+      userAnswers[qid] = selectedIdx;
+      const q = QUESTION_BANK.find(item => item.id === qid);
+
+      q.options.forEach((_, optIdx) => {
+        const btn = document.getElementById(`btn_${qid}_${optIdx}`);
+        btn.disabled = true;
+        if (optIdx === correctIdx) {
+          btn.classList.add('correct');
+          btn.innerHTML += ' ✓ (正確)';
+        }
+      });
+
+      if (selectedIdx !== correctIdx) {
+        const wrongBtn = document.getElementById(`btn_${qid}_${selectedIdx}`);
+        wrongBtn.classList.add('wrong');
+        wrongBtn.innerHTML += ' ✕ (您的選擇)';
+      }
+
+      document.getElementById(`expl_${qid}`).classList.add('show');
+      updateStats();
+    }
+
+    function updateStats() {
+      const answeredKeys = Object.keys(userAnswers);
+      const answeredCount = answeredKeys.length;
+      document.getElementById('answeredCount').innerText = answeredCount;
+
+      let correctCount = 0;
+      answeredKeys.forEach(qid => {
+        const q = QUESTION_BANK.find(item => item.id == qid);
+        if (userAnswers[qid] === q.answer) {
+          correctCount++;
+        }
+      });
+
+      const accuracy = answeredCount > 0 ? Math.round((correctCount / answeredCount) * 100) : 0;
+      document.getElementById('accuracyRate').innerText = accuracy + '%';
+    }
+
+    function resetQuiz() {
+      Object.keys(userAnswers).forEach(key => delete userAnswers[key]);
+      renderQuiz();
+    }
+
+    function openQuiz() {
+      document.getElementById('quizModal').classList.add('active');
+      renderQuiz();
+    }
+
+    function closeQuiz() {
+      document.getElementById('quizModal').classList.remove('active');
+    }
+
+    function toggleTheme() {
+      document.body.classList.toggle('theme-paper');
+    }
+
+    function toggleCloze() {
+      document.body.classList.toggle('cloze-mode');
+      document.querySelectorAll('.cloze').forEach(el => el.classList.remove('revealed'));
+    }
+
+    document.addEventListener('click', function(e) {
+      if (!document.body.classList.contains('cloze-mode')) return;
+      const clozeTarget = e.target.closest('.cloze');
+      if (clozeTarget) {
+        e.stopPropagation();
+        clozeTarget.classList.toggle('revealed');
+      }
+    });
+
+    renderQuiz();
+  </script>
+</body>
+</html>
