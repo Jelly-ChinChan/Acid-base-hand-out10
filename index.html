@@ -445,7 +445,7 @@
       <div class="main-title-wrap">
         <span class="brand-tag" style="font-size:0.95rem; padding:3px 8px;">展氏新解</span>
         <h1>酸與鹽的緩衝能力、配製方法與進階計算</h1>
-        <span class="badge-pill">緩衝機制 · 莫耳數與緩衝能力 · pH=5 配製選擇 · 限量反應與 pH 計算</span>
+        <span class="badge-pill">緩衝機制 · 莫耳數與緩衝能力 · pH=5 配製選擇 · 加強酸/強鹼限量反應計算</span>
       </div>
     </div>
 
@@ -584,7 +584,7 @@
       <div class="col-card">
         <div class="col-title">
           <span>四、緩衝計算公式與實戰範例</span>
-          <span style="font-size:0.75rem; opacity:0.8;">加水稀釋與加強鹼計算</span>
+          <span style="font-size:0.75rem; opacity:0.8;">加水稀釋與加強酸鹼計算</span>
         </div>
 
         <!-- 1. 核心公式 -->
@@ -596,7 +596,7 @@
           </div>
         </div>
 
-        <!-- 2. 實戰範例與加水稀釋不變性 -->
+        <!-- 2. 實戰演練：pH ＝ 5 的緩衝液變化 -->
         <div class="reaction-box" style="border-left: 3px solid var(--chalk-orange); letter-spacing:-0.3px;">
           <div class="sub-head" style="color:var(--chalk-orange);">
             2. 實戰演練：pH ＝ 5 的緩衝液變化
@@ -618,13 +618,31 @@
               <tr><td><b>平 (E)</b></td><td><span style="color:var(--chalk-cyan);">0.5 mol</span></td><td>0</td><td><span style="color:var(--chalk-green);">1.5 mol</span></td><td>－</td></tr>
             </table>
 
-            <div style="margin-top: 6px;">
-              <b>代入公式計算：</b><br>
-              <div style="font-family:monospace; margin-top:2px; font-size:0.74rem; color:var(--chalk-yellow); background:rgba(0,0,0,0.3); padding:5px; border-radius:4px;">
+            <div style="margin-top: 4px;">
+              <div style="font-family:monospace; font-size:0.73rem; color:var(--chalk-yellow); background:rgba(0,0,0,0.3); padding:4px; border-radius:4px;">
                 [H<sup>+</sup>] ＝ 10<sup>-5</sup> × (0.5 / 1.5) ＝ 10<sup>-5</sup> / 3<br>
-                pH ＝ －log(10<sup>-5</sup> / 3) ＝ 5 ＋ log 3 <span style="font-weight:bold; color:var(--chalk-green);">≈ 5.48</span>
+                pH ＝ 5 ＋ log 3 <span style="font-weight:bold; color:var(--chalk-green);">≈ 5.48</span>
+              </div>
+            </div><br>
+
+            • <b style="color:var(--chalk-yellow);">Q3：再加入 0.5 mol HCl 後的 pH 為何？</b><br>
+            <div style="font-family:monospace; margin-top:4px;">
+              CH<sub>3</sub>COO<sup>-</sup> ＋ H<sup>+</sup> → CH<sub>3</sub>COOH
+            </div>
+            <table class="role-table" style="font-size:0.72rem; margin:4px 0;">
+              <tr style="background:rgba(0,0,0,0.4);"><th>狀態</th><th>CH<sub>3</sub>COO<sup>-</sup></th><th>H<sup>+</sup></th><th>CH<sub>3</sub>COOH</th><th>H<sub>2</sub>O</th></tr>
+              <tr><td><b>初 (I)</b></td><td>1 mol</td><td>0.5 mol</td><td>1 mol</td><td>－</td></tr>
+              <tr style="border-bottom: 2px solid var(--chalk-orange);"><td><b>變 (C)</b></td><td>－0.5</td><td>－0.5</td><td>＋0.5</td><td>－</td></tr>
+              <tr><td><b>平 (E)</b></td><td><span style="color:var(--chalk-cyan);">0.5 mol</span></td><td>0</td><td><span style="color:var(--chalk-green);">1.5 mol</span></td><td>－</td></tr>
+            </table>
+
+            <div style="margin-top: 4px;">
+              <div style="font-family:monospace; font-size:0.73rem; color:var(--chalk-yellow); background:rgba(0,0,0,0.3); padding:4px; border-radius:4px;">
+                [H<sup>+</sup>] ＝ 10<sup>-5</sup> × (1.5 / 0.5) ＝ 3 × 10<sup>-5</sup><br>
+                pH ＝ 5 － log 3 <span style="font-weight:bold; color:var(--chalk-green);">≈ 4.52</span>
               </div>
             </div>
+
           </div>
         </div>
 
