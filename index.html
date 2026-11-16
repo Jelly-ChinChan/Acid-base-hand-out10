@@ -605,17 +605,25 @@
             • <b>已知條件</b>：於含有 CH<sub>3</sub>COOH (1 mol) 與 CH<sub>3</sub>COO<sup>-</sup> (1 mol) 的緩衝液中：<br>
             • <b style="color:var(--chalk-yellow);">Q1：加水稀釋後，pH 是否改變？</b><br>
             ➡ <b>pH ＝ 5（維持不變）</b>。<br>
-            <i>原因：</i>因 [共軛酸] 與 [共軛鹼] 同時被稀釋相同的體積倍數，濃度比值 $\frac{[\text{HA}]}{[A^-]}$ 維持不變，故 pH 不隨加水而改變！<br><br>
+            <i>原因：</i>因 [共軛酸] 與 [共軛鹼] 同時被稀釋相同的體積倍數，濃度比值 ([HA] / [A⁻]) 維持不變，故 pH 不隨加水而改變！<br><br>
             
             • <b style="color:var(--chalk-yellow);">Q2：再加入 0.5 mol NaOH 後的 pH 為何？</b><br>
-            <div style="background: rgba(0,0,0,0.35); padding: 5px; border-radius: 4px; margin-top: 4px; font-family: monospace; font-size: 0.74rem;">
-              CH<sub>3</sub>COOH ＋ OH<sup>-</sup> → CH<sub>3</sub>COO<sup>-</sup> ＋ H<sub>2</sub>O<br>
-              初： 1 mol　　 0.5 mol　　 1 mol<br>
-              變： －0.5　　 －0.5　　 ＋0.5<br>
-              平： <span style="color:var(--chalk-cyan);">0.5 mol</span>　　 0　　　 <span style="color:var(--chalk-green);">1.5 mol</span><br><br>
-              代入公式：<br>
-              [H<sup>+</sup>] ＝ 10<sup>-5</sup> × (0.5 / 1.5) ＝ 10<sup>-5</sup> / 3<br>
-              pH ＝ －log(10<sup>-5</sup> / 3) ＝ 5 ＋ log 3 <span style="color:var(--chalk-yellow); font-weight:bold;">≈ 5.48</span>
+            <div style="font-family:monospace; margin-top:4px;">
+              CH<sub>3</sub>COOH ＋ OH<sup>-</sup> → CH<sub>3</sub>COO<sup>-</sup> ＋ H<sub>2</sub>O
+            </div>
+            <table class="role-table" style="font-size:0.72rem; margin:4px 0;">
+              <tr style="background:rgba(0,0,0,0.4);"><th>狀態</th><th>CH<sub>3</sub>COOH</th><th>OH<sup>-</sup></th><th>CH<sub>3</sub>COO<sup>-</sup></th><th>H<sub>2</sub>O</th></tr>
+              <tr><td><b>初 (I)</b></td><td>1 mol</td><td>0.5 mol</td><td>1 mol</td><td>－</td></tr>
+              <tr style="border-bottom: 2px solid var(--chalk-orange);"><td><b>變 (C)</b></td><td>－0.5</td><td>－0.5</td><td>＋0.5</td><td>－</td></tr>
+              <tr><td><b>平 (E)</b></td><td><span style="color:var(--chalk-cyan);">0.5 mol</span></td><td>0</td><td><span style="color:var(--chalk-green);">1.5 mol</span></td><td>－</td></tr>
+            </table>
+
+            <div style="margin-top: 6px;">
+              <b>代入公式計算：</b><br>
+              <div style="font-family:monospace; margin-top:2px; font-size:0.74rem; color:var(--chalk-yellow); background:rgba(0,0,0,0.3); padding:5px; border-radius:4px;">
+                [H<sup>+</sup>] ＝ 10<sup>-5</sup> × (0.5 / 1.5) ＝ 10<sup>-5</sup> / 3<br>
+                pH ＝ －log(10<sup>-5</sup> / 3) ＝ 5 ＋ log 3 <span style="font-weight:bold; color:var(--chalk-green);">≈ 5.48</span>
+              </div>
             </div>
           </div>
         </div>
@@ -644,7 +652,7 @@
             📌 A. 為什麼緩衝溶液加水稀釋時，pH 值幾乎保持不變？
           </div>
           <p style="font-size:0.81rem; color:var(--text-sub); line-height:1.55;">
-            從 Henderson-Hasselbalch 方程式可知，pH 決定於共軛酸與共軛鹼的<b>濃度比值</b> $\log([A^-]/[HA])$。當加入純水稀釋時，酸與鹽兩者同時被擴大相同的體積體積 $V$，分子的體積與分母的體積互相消去，因此比值維持恆定。不過，若加水稀釋到極度極端（接近水的自動解離濃度 $10^{-7}\text{ M}$），則緩衝效果才會失效。
+            從 Henderson-Hasselbalch 方程式可知，pH 決定於共軛酸與共軛鹼的<b>濃度比值</b> log([A⁻]/[HA])。當加入純水稀釋時，酸與鹽兩者同時被擴大相同的體積 V，分子的體積與分母的體積互相消去，因此比值維持恆定。不過，若加水稀釋到極度極端（接近水的自動解離濃度 10⁻⁷ M），則緩衝效果才會失效。
           </p>
         </div>
 
@@ -654,7 +662,7 @@
             📌 B. 緩衝容量（Buffer Capacity）的極限在哪裡？
           </div>
           <p style="font-size:0.81rem; color:var(--text-sub); line-height:1.55;">
-            緩衝溶液並非萬能。當外加的強酸或強鹼莫耳數超過了緩衝液中原本的共軛鹼或共軛酸總量時（即酸或鹼被完全耗盡），緩衝對瓦解，pH 值就會發生劇烈崩潰。一般而言，當緩衝比值 $\frac{[A^-]}{[HA]}$ 落在 $0.1$ 到 $10$ 之間（即 $\text{pH} = \text{p}K_a \pm 1$）時，緩衝溶液具有最佳的抗酸抗鹼效能。
+            緩衝溶液並非萬能。當外加的強酸或強鹼莫耳數超過了緩衝液中原本的共軛鹼或共軛酸總量時（即酸或鹼被完全耗盡），緩衝對瓦解，pH 值就會發生劇烈崩潰。一般而言，當緩衝比值 [A⁻]/[HA] 落在 0.1 到 10 之間（即 pH = pKa ± 1）時，緩衝溶液具有最佳的抗酸抗鹼效能。
           </p>
         </div>
 
@@ -664,7 +672,7 @@
             📌 C. 生物體內的經典緩衝系統：碳酸氫鹽與磷酸鹽緩衝對
           </div>
           <p style="font-size:0.81rem; color:var(--text-sub); line-height:1.55;">
-            人體血液的 pH 值必須嚴格維持在 $7.35 \sim 7.45$ 之間，這主要依賴血液中的碳酸氫鹽緩衝系統（$\text{H}_2\text{CO}_3 / \text{HCO}_3^-$）以及細胞內的磷酸鹽緩衝系統（$\text{H}_2\text{PO}_4^- / \text{HPO}_4^{2-}$）。透過肺部調節二氧化碳呼出量與腎臟排泄氫離子，人體展現了精妙絕倫的動態緩衝平衡。
+            人體血液的 pH 值必須嚴格維持在 7.35 ~ 7.45 之間，這主要依賴血液中的碳酸氫鹽緩衝系統（H₂CO₃ / HCO₃⁻）以及細胞內的磷酸鹽緩衝系統（H₂PO₄⁻ / HPO₄²⁻）。透過肺部調節二氧化碳呼出量與腎臟排泄氫離子，人體展現了精妙絕倫的動態緩衝平衡。
           </p>
         </div>
 
