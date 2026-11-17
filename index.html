@@ -327,14 +327,6 @@
       border: 1px solid var(--card-border);
     }
 
-    .diagram-wrap svg {
-      width: 100%;
-      max-width: 280px;
-      height: auto;
-      margin: 0 auto;
-      display: block;
-    }
-
     /* 挖空模式樣式 */
     .cloze { transition: background-color 0.2s ease, color 0.2s ease; cursor: default; }
     body.cloze-mode .cloze {
@@ -445,7 +437,7 @@
       <div class="main-title-wrap">
         <span class="brand-tag" style="font-size:0.95rem; padding:3px 8px;">展氏新解</span>
         <h1>酸與鹽的緩衝能力、配製方法與進階計算</h1>
-        <span class="badge-pill">緩衝機制 · 共同離子效應 · 莫耳數與緩衝能力 · 加強酸/強鹼限量反應計算</span>
+        <span class="badge-pill">緩衝機制 · 共同離子效應 · 緩衝容量與莫耳數 · 加強酸/強鹼限量反應計算</span>
       </div>
     </div>
 
@@ -481,20 +473,8 @@
           </div>
         </div>
 
-        <!-- 微觀莫耳數對比 -->
-        <div class="diagram-wrap" style="padding: 8px 6px;">
-          <div style="font-size: 0.78rem; font-weight: 800; color: var(--chalk-yellow); margin-bottom: 4px;">
-            【緩衝容量概念】：莫耳數決定抗酸抗鹼極限
-          </div>
-          <div style="font-size: 0.75rem; text-align: left; background: rgba(0,0,0,0.3); padding: 6px; border-radius: 6px; line-height: 1.5;">
-            • 含 <span class="gold-glow" style="padding: 1px 4px; border-radius: 3px; display: inline-block;">10個 HF & 10個 F<sup>-</sup></span>：最多可緩衝 10 個 NaOH 及 10 個 HCl。<br>
-            • 含 <span class="gold-glow" style="padding: 1px 4px; border-radius: 3px; display: inline-block;">100個 HF & 100個 F<sup>-</sup></span>：最多可緩衝 100 個 NaOH 及 100 個 HCl。<br>
-            📌 <b>結論</b>：緩衝液中成分的<b>莫耳數越多, 緩衝越佳</b>！
-          </div>
-        </div>
-
         <div class="note-pill" style="display:block; text-align:center;">
-          📌 經典考題：相同濃度下, 體積愈大、莫耳數愈多者緩衝效果最好！
+          📌 展哥重點：共軛酸鹼對透過中和反應，化解外加強酸強鹼的衝擊！
         </div>
       </div>
 
@@ -505,9 +485,19 @@
           <span style="font-size:0.75rem; opacity:0.8;">莫耳數與總量比較</span>
         </div>
 
-        <div class="section-box">
-          <div class="sub-head" style="color: var(--chalk-orange);">📋 經典考題辨析</div>
-          <div style="background: rgba(0,0,0,0.3); border-left: 2px solid var(--chalk-orange); padding: 5px; border-radius: 4px; margin-bottom: 6px; font-size: 0.78rem;">
+        <!-- 緩衝容量概念 -->
+        <div class="section-box" style="border-left-color: var(--chalk-yellow); padding: 8px;">
+          <div class="sub-head" style="color:var(--chalk-yellow); font-size:0.84rem;">【緩衝容量概念】：莫耳數決定極限</div>
+          <div style="font-size: 0.77rem; line-height: 1.5; margin-top: 3px;">
+            • 含 <span class="gold-glow" style="padding: 1px 3px; border-radius: 3px; display: inline-block;">10個 HF & 10個 F<sup>-</sup></span>：最多可緩衝 10 個 NaOH 及 10 個 HCl。<br>
+            • 含 <span class="gold-glow" style="padding: 1px 3px; border-radius: 3px; display: inline-block;">100個 HF & 100個 F<sup>-</sup></span>：最多可緩衝 100 個 NaOH 及 100 個 HCl。<br>
+            📌 <b>結論</b>：緩衝液中成分的<b>莫耳數越多，緩衝越佳</b>！
+          </div>
+        </div>
+
+        <div class="section-box" style="padding: 8px;">
+          <div class="sub-head" style="color: var(--chalk-orange); font-size:0.84rem;">📋 經典考題辨析</div>
+          <div style="background: rgba(0,0,0,0.3); border-left: 2px solid var(--chalk-orange); padding: 4px; border-radius: 4px; margin-bottom: 5px; font-size: 0.75rem;">
             <b>下列何者緩衝效果最佳？</b><br>
             甲：100 mL, 0.1 M HCl ＋ 0.1 M Cl<sup>-</sup><br>
             乙：100 mL, 0.1 M HF ＋ 0.1 M F<sup>-</sup><br>
@@ -515,29 +505,18 @@
             丁：1000 mL, 0.2 M HF ＋ 0.2 M F<sup>-</sup>
           </div>
 
-          <div style="font-size:0.78rem; line-height:1.55; letter-spacing:-0.3px;">
+          <div style="font-size:0.76rem; line-height:1.5; letter-spacing:-0.3px;">
             • <b>逐一解析</b>：<br>
-            • <b>甲選項</b>：HCl 為強酸, 無共軛酸鹼緩衝對, <span style="color:var(--chalk-red); font-weight:bold;">無緩衝能力 (❌)</span>。<br>
-            • <b>乙選項</b>：100 mL × 0.1 M ＝ 10 mmol (HF 與 F<sup>-</sup> 各 10 mmol)。<br>
-            • <b>丙選項</b>：1000 mL × 0.1 M ＝ 100 mmol (HF 與 F<sup>-</sup> 各 100 mmol), 比乙 <span style="color:var(--chalk-green); font-weight:bold;">更好 (⭕)</span>。<br>
-            • <b>丁選項</b>：1000 mL × 0.2 M ＝ 200 mmol (HF 與 F<sup>-</sup> 各 200 mmol), 莫耳數最多, <span class="gold-glow" style="padding: 1px 4px; border-radius: 3px; display: inline-block;">緩衝效果最佳 (🏆)</span>。<br>
-            • <b>同濃度比體積, 同體積比濃度, 總莫耳數決定一切！</b>
-          </div>
-        </div>
-
-        <div class="reaction-box" style="border-left: 3px solid var(--chalk-cyan); letter-spacing:-0.3px;">
-          <div class="sub-head" style="color:var(--chalk-cyan);">
-            💡 緩衝液核心構成條件
-          </div>
-          <div style="font-size:0.79rem; line-height:1.5;">
-            1. 必須含有<b>弱酸及其共軛鹼</b>（或弱鹼及其共軛酸）。<br>
-            2. 兩者濃度皆不可為 0, 且數量相當（通常濃度比在 0.1 ~ 10 之間具有良好緩衝範圍）。<br>
-            3. 強酸與其鹽類（如 HCl + NaCl）無法構成緩衝液！
+            • <b>甲</b>：強酸無共軛對，<span style="color:var(--chalk-red); font-weight:bold;">無緩衝 (❌)</span>。<br>
+            • <b>乙</b>：10 mmol (HF 與 F<sup>-</sup> 各 10 mmol)。<br>
+            • <b>丙</b>：100 mmol，比乙 <span style="color:var(--chalk-green); font-weight:bold;">更好 (⭕)</span>。<br>
+            • <b>丁</b>：200 mmol，莫耳數最多，<span class="gold-glow" style="padding: 1px 3px; border-radius: 3px; display: inline-block;">緩衝最佳 (🏆)</span>。<br>
+            📌 <b>考題金句</b>：相同濃度下，體積愈大、莫耳數愈多者緩衝效果最好！
           </div>
         </div>
 
         <div class="note-pill" style="display:block; text-align:center;">
-          💡 展哥口訣：有弱酸才有共軛對, 莫耳數大者勝出！
+          💡 展哥口訣：有弱酸才有共軛對，莫耳數大者勝出！
         </div>
       </div>
 
@@ -564,7 +543,7 @@
           </div>
           <div style="font-size:0.79rem; line-height:1.5;">
             • <b style="color:var(--chalk-cyan);">甲</b>：用 CH<sub>3</sub>COOH ＋ CH<sub>3</sub>COO<sup>-</sup> (Ka = 10<sup>-5</sup>) <span style="color:var(--chalk-green); font-weight:bold;">(⭕ 正確)</span><br>
-            • <b style="color:var(--chalk-cyan);">乙</b>：用 HF ＋ F<sup>-</sup> (Ka = 10<sup>-4</sup>) <span style="color:var(--chalk-red); font-weight:bold;">(❌ 酸性太強, 不適合 pH=5)</span><br>
+            • <b style="color:var(--chalk-cyan);">乙</b>：用 HF ＋ F<sup>-</sup> (Ka = 10<sup>-4</sup>) <span style="color:var(--chalk-red); font-weight:bold;">(❌ 酸性太強，不適合 pH=5)</span><br>
             • <b style="color:var(--chalk-cyan);">丙</b>：用 <span class="cloze" style="font-weight:bold;">1 mol CH<sub>3</sub>COOH ＋ 0.5 mol NaOH</span> 進行中和反應：<br>
             <div style="font-family:monospace; font-size:0.72rem; color:var(--chalk-yellow); margin:2px 0;">
               CH<sub>3</sub>COOH ＋ OH<sup>-</sup> → CH<sub>3</sub>COO<sup>-</sup> ＋ H<sub>2</sub>O<br>
@@ -579,7 +558,7 @@
         </div>
 
         <div class="note-pill" style="display:block; text-align:center;">
-          📌 展哥重點：利用限量強酸/強鹼與弱酸/弱鹼反應, 是實驗室配製緩衝液的常用手法！
+          📌 展哥重點：利用限量強酸/強鹼與弱酸/弱鹼反應，是實驗室配製緩衝液的常用手法！
         </div>
       </div>
 
@@ -606,9 +585,9 @@
           </div>
           <div style="font-size:0.78rem; line-height:1.5;">
             • <b>已知條件</b>：於含有 CH<sub>3</sub>COOH (1 mol) 與 CH<sub>3</sub>COO<sup>-</sup> (1 mol) 的緩衝液中：<br>
-            • <b style="color:var(--chalk-yellow);">Q1：加水稀釋後, pH 是否改變？</b><br>
+            • <b style="color:var(--chalk-yellow);">Q1：加水稀釋後，pH 是否改變？</b><br>
             ➡ <b>pH ＝ 5（維持不變）</b>。<br>
-            <i>原因：</i>因 [共軛酸] 與 [共軛鹼] 同時被稀釋相同的體積倍數, 濃度比值 ([HA] / [A⁻]) 維持不變, 故 pH 不隨加水而改變！<br><br>
+            <i>原因：</i>因 [共軛酸] 與 [共軛鹼] 同時被稀釋相同的體積倍數，濃度比值 ([HA] / [A⁻]) 維持不變，故 pH 不隨加水而改變！<br><br>
             
             • <b style="color:var(--chalk-yellow);">Q2：再加入 0.5 mol NaOH 後的 pH 為何？</b><br>
             <div style="font-family:monospace; margin-top:4px;">
@@ -670,10 +649,10 @@
         <!-- 區塊 A -->
         <div style="background: var(--ext-inner-box); border: 1px solid var(--card-border); border-radius: 8px; padding: 11px; font-size: 0.84rem;">
           <div style="font-weight:800; color:var(--chalk-cyan); font-size:0.9rem; margin-bottom:4px;">
-            📌 A. 為什麼緩衝溶液加水稀釋時, pH 值幾乎保持不變？
+            📌 A. 為什麼緩衝溶液加水稀釋時，pH 值幾乎保持不變？
           </div>
           <p style="font-size:0.81rem; color:var(--text-sub); line-height:1.55;">
-            從 Henderson-Hasselbalch 方程式可知, pH 決定於共軛酸與共軛鹼的<b>濃度比值</b> log([A⁻]/[HA])。當加入純水稀釋時, 酸與鹽兩者同時被擴大相同的體積 V, 分子的體積與分母的體積互相消去, 因此比值維持恆定。不過, 若加水稀釋到極度極端（接近水的自動解離濃度 10⁻⁷ M）, 則緩衝效果才會失效。
+            從 Henderson-Hasselbalch 方程式可知，pH 決定於共軛酸與共軛鹼的<b>濃度比值</b> log([A⁻]/[HA])。當加入純水稀釋時，酸與鹽兩者同時被擴大相同的體積 V，分子的體積與分母的體積互相消去，因此比值維持恆定。不過，若加水稀釋到極度極端（接近水的自動解離濃度 10⁻⁷ M），則緩衝效果才會失效。
           </p>
         </div>
 
@@ -683,7 +662,7 @@
             📌 B. 緩衝容量（Buffer Capacity）的極限在哪裡？
           </div>
           <p style="font-size:0.81rem; color:var(--text-sub); line-height:1.55;">
-            緩衝溶液並非萬能。當外加的強酸或強鹼莫耳數超過了緩衝液中原本的共軛鹼或共軛酸總量時（即酸或鹼被完全耗盡）, 緩衝對瓦解, pH 值就會發生劇烈崩潰。一般而言, 當緩衝比值 [A⁻]/[HA] 落在 0.1 到 10 之間（即 pH = pKa ± 1）時, 緩衝溶液具有最佳的抗酸抗鹼效能。
+            緩衝溶液並非萬能。當外加的強酸或強鹼莫耳數超過了緩衝液中原本的共軛鹼或共軛酸總量時（即酸或鹼被完全耗盡），緩衝對瓦解，pH 值就會發生劇烈崩潰。一般而言，當緩衝比值 [A⁻]/[HA] 落在 0.1 到 10 之間（即 pH = pKa ± 1）時，緩衝溶液具有最佳的抗酸抗鹼效能。
           </p>
         </div>
 
@@ -693,7 +672,7 @@
             📌 C. 生物體內的經典緩衝系統：碳酸氫鹽與磷酸鹽緩衝對
           </div>
           <p style="font-size:0.81rem; color:var(--text-sub); line-height:1.55;">
-            人體血液的 pH 值必須嚴格維持在 7.35 ~ 7.45 之間, 這主要依賴血液中的碳酸氫鹽緩衝系統（H₂CO₃ / HCO₃⁻）以及細胞內的磷酸鹽緩衝系統（H₂PO₄⁻ / HPO₄²⁻）。透過肺部調節二氧化碳呼出量與腎臟排泄氫離子, 人體展現了精妙絕倫的動態緩衝平衡。
+            人體血液的 pH 值必須嚴格維持在 7.35 ~ 7.45 之間，這主要依賴血液中的碳酸氫鹽緩衝系統（H₂CO₃ / HCO₃⁻）以及細胞內的磷酸鹽緩衝系統（H₂PO₄⁻ / HPO₄²⁻）。透過肺部調節二氧化碳呼出量與腎臟排泄氫離子，人體展現了精妙絕倫的動態緩衝平衡。
           </p>
         </div>
 
@@ -737,21 +716,21 @@
       {
         id: 1,
         level: "緩衝能力與莫耳數比較",
-        question: "下列關於緩衝溶液及其緩衝能力的敘述, 何者正確？",
+        question: "下列關於緩衝溶液及其緩衝能力的敘述，何者正確？",
         options: [
           "A. 100 mL, 0.1 M HCl 混合 0.1 M NaCl 可構成極佳的緩衝溶液",
-          "B. 緩衝溶液中酸與鹽的總莫耳數愈多, 其緩衝能力愈佳",
-          "C. 緩衝溶液加水稀釋 10 倍時, 其 pH 值會顯著上升 1 個單位",
-          "D. 緩衝溶液只能消去外加的酸, 無法消去外加的鹼",
+          "B. 緩衝溶液中酸與鹽的總莫耳數愈多，其緩衝能力愈佳",
+          "C. 緩衝溶液加水稀釋 10 倍時，其 pH 值會顯著上升 1 個單位",
+          "D. 緩衝溶液只能消去外加的酸，無法消去外加的鹼",
           "E. 強酸與強鹼的中和鹽類水溶液皆具備強效緩衝能力"
         ],
         answer: 1,
-        explanation: "【展氏新解解析】：<br>• 強酸 HCl 與 NaCl 無共軛酸鹼對, 無法構成緩衝液 (A 錯誤)。<br>• 緩衝溶液加水稀釋時, 因濃度比值不變, pH 值維持不變 (C 錯誤)。<br>• 緩衝溶液同時含有弱酸（可消去 OH<sup>-</sup>）與共軛鹼（可消去 H<sup>+</sup>）, 且總莫耳數愈多緩衝能力愈佳 (B 正確)。"
+        explanation: "【展氏新解解析】：<br>• 強酸 HCl 與 NaCl 無共軛酸鹼對，無法構成緩衝液 (A 錯誤)。<br>• 緩衝溶液加水稀釋時，因濃度比值不變，pH 值維持不變 (C 錯誤)。<br>• 緩衝溶液同時含有弱酸（可消去 OH<sup>-</sup>）與共軛鹼（可消去 H<sup>+</sup>），且總莫耳數愈多緩衝能力愈佳 (B 正確)。"
       },
       {
         id: 2,
         level: "緩衝溶液配製方法",
-        question: "若欲在實驗室配製 pH ＝ 5.0 的緩衝溶液, 下列何種弱酸及其共軛鹼組合最為適當？（已知水的 Kw ＝ 10<sup>-14</sup>）",
+        question: "若欲在實驗室配製 pH ＝ 5.0 的緩衝溶液，下列何種弱酸及其共軛鹼組合最為適當？（已知水的 Kw ＝ 10<sup>-14</sup>）",
         options: [
           "A. Ka ＝ 10<sup>-2</sup> 之強弱適中酸",
           "B. Ka ＝ 10<sup>-5</sup> 之弱酸（如醋酸 CH<sub>3</sub>COOH）",
@@ -760,21 +739,21 @@
           "E. 任何酸鹼對皆可任意配製出 pH=5.0"
         ],
         answer: 1,
-        explanation: "【展氏新解解析】：<br>• 欲配製特定 pH 值（如 pH = 5.0）的緩衝液, 應選擇 pKa 接近欲配製 pH 值的弱酸, 即 Ka ≒ 10<sup>-5</sup>（如醋酸系統）最為理想。<br>• 故選項 B 正確。"
+        explanation: "【展氏新解解析】：<br>• 欲配製特定 pH 值（如 pH = 5.0）的緩衝液，應選擇 pKa 接近欲配製 pH 值的弱酸，即 Ka ≒ 10<sup>-5</sup>（如醋酸系統）最為理想。<br>• 故選項 B 正確。"
       },
       {
         id: 3,
         level: "緩衝溶液限量反應與計算",
-        question: "於含有 1 mol CH<sub>3</sub>COOH 及 1 mol CH<sub>3</sub>COO<sup>-</sup> 之緩衝溶液中, 加入 0.5 mol NaOH 固體完全溶解後（體積變化忽略）, 關於溶液之敘述何者正確？",
+        question: "於含有 1 mol CH<sub>3</sub>COOH 及 1 mol CH<sub>3</sub>COO<sup>-</sup> 之緩衝溶液中，加入 0.5 mol NaOH 固體完全溶解後（體積變化忽略），關於溶液之敘述何者正確？",
         options: [
-          "A. 溶液中 CH<sub>3</sub>COOH 減少至 0.5 mol, CH<sub>3</sub>COO<sup>-</sup> 增加至 1.5 mol",
-          "B. 溶液中 CH<sub>3</sub>COOH 完全被中和耗盡, 失去緩衝能力",
+          "A. 溶液中 CH<sub>3</sub>COOH 減少至 0.5 mol，CH<sub>3</sub>COO<sup>-</sup> 增加至 1.5 mol",
+          "B. 溶液中 CH<sub>3</sub>COOH 完全被中和耗盡，失去緩衝能力",
           "C. 加入 NaOH 後溶液 pH 值會大幅下降",
           "D. 溶液中 [H<sup>+</sup>] 變為原本的 3 倍",
           "E. 溶液的 pH 值會維持剛好 5.0 不變"
         ],
         answer: 0,
-        explanation: "【展氏新解解析】：<br>• 進行限量反應：CH<sub>3</sub>COOH ＋ OH<sup>-</sup> → CH<sub>3</sub>COO<sup>-</sup>。<br>• 加入 0.5 mol OH<sup>-</sup> 會消耗 0.5 mol CH<sub>3</sub>COOH 轉生成 0.5 mol CH<sub>3</sub>COO<sup>-</sup>。<br>• 反應後：[CH<sub>3</sub>COOH] 剩 0.5 mol, [CH<sub>3</sub>COO<sup>-</sup>] 增為 1.5 mol。<br>• 故選項 A 正確。"
+        explanation: "【展氏新解解析】：<br>• 進行限量反應：CH<sub>3</sub>COOH ＋ OH<sup>-</sup> → CH<sub>3</sub>COO<sup>-</sup>。<br>• 加入 0.5 mol OH<sup>-</sup> 會消耗 0.5 mol CH<sub>3</sub>COOH 轉生成 0.5 mol CH<sub>3</sub>COO<sup>-</sup>。<br>• 反應後：[CH<sub>3</sub>COOH] 剩 0.5 mol，[CH<sub>3</sub>COO<sup>-</sup>] 增為 1.5 mol。<br>• 故選項 A 正確。"
       }
     ];
 
